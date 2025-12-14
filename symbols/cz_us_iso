@@ -1,0 +1,64 @@
+// Custom US layout with Czech diacritics
+//
+// PURPOSE:
+// This layout allows typing Czech text while maintaining a US keyboard layout.
+// Czech letters replace numbers on the number row, while keeping US symbols
+// accessible via Shift. The Level3 modifier gives you Czech keyboard's shifted symbols.
+//
+// PHYSICAL KEYBOARD:
+// Designed for International English (ISO) keyboard layout, which has an extra
+// key between Left Shift and Z. This extra key serves as the modifier (Level3).
+//
+// KEY MAPPINGS:
+// Number row (1-0): Czech letters +ěščřžýáíé (unshifted)
+//                   US symbols !@#$%^&*() (with Shift)
+//                   Czech shifted 1234567890 (with Level3)
+// [ key:            [ { ú (Level3)
+// ; key:            ; : ů (Level3)
+//
+// USAGE:
+// - Type Czech letters directly: press 2 for ě, 3 for š, etc.
+// - Type US symbols: Shift+2 for @, Shift+3 for #, etc.
+// - Type numbers: Level3+1 for 1, Level3+2 for 2, etc.
+// - Type Czech shifted symbols: Level3 acts like Shift on Czech keyboard
+// - Type ú: Level3+[
+// - Type ů: Level3+;
+// - Capitals: Use Caps Lock as normal (Ě, Š, Č, Ú, Ů, etc.)
+//
+// MODIFIER KEY:
+// The extra key between Left Shift and Z (typically <|> on ISO keyboards)
+// serves as the Level3 modifier key.
+
+partial alphanumeric_keys
+xkb_symbols "basic" {
+    include "us(basic)"
+    name[Group1]= "Czech (US layout, ISO keyboard)";
+
+    // Number row mappings - Level3 gives Czech QWERTY shifted symbols
+    // Format:   [ unshifted,   shifted,      level3         ]
+    key <TLDE> { [ grave,	    asciitilde,   dead_acute ] }; // `, ~, ´ (dead key for acute accent)
+    key <AE01> { [ plus,        exclam,       1              ] }; // +, !, 1
+    key <AE02> { [ ecaron,      at,           2              ] }; // ě, @, 2
+    key <AE03> { [ scaron,      numbersign,   3              ] }; // š, #, 3
+    key <AE04> { [ ccaron,      dollar,       4              ] }; // č, $, 4
+    key <AE05> { [ rcaron,      percent,      5              ] }; // ř, %, 5
+    key <AE06> { [ zcaron,      asciicircum,  6              ] }; // ž, ^, 6
+    key <AE07> { [ yacute,      ampersand,    7              ] }; // ý, &, 7
+    key <AE08> { [ aacute,      asterisk,     8              ] }; // á, *, 8
+    key <AE09> { [ iacute,      parenleft,    9              ] }; // í, (, 9
+    key <AE10> { [ eacute,      parenright,   0              ] }; // é, ), 0
+    key <AE11> { [ minus,       underscore,   percent        ] }; // -, _, %
+    key <AE12> { [ equal,       plus,         dead_caron     ] }; // =, +, ˇ (dead key)
+
+    // Top row (QWERTY)
+    key <AD11> { [ bracketleft, braceleft,    uacute         ] }; // [, {, ú
+    key <AD12> { [ bracketright,braceright,   parenleft      ] }; // ], }, (
+
+    // Home row
+    key <AC10> { [ semicolon,   colon,        uring          ] }; // ;, :, ů
+    key <AC11> { [ apostrophe,  quotedbl,     exclam         ] }; // ', ", !
+    key <BKSL> { [ backslash,   bar,          ncaron         ] }; // \, |, ň
+
+    // Use the extra ISO key (between Left Shift and Z) as Level3 modifier
+    include "level3(lsgt_switch)"
+};
