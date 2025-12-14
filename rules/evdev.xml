@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE xkbConfigRegistry SYSTEM "xkb.dtd">
+<xkbConfigRegistry version="1.1">
+  <layoutList>
+    <layout>
+      <configItem>
+        <name>cz_us_iso</name>
+        <shortDescription>cs-en-iso</shortDescription>
+        <description>Czech (US layout, ISO keyboard)</description>
+        <countryList>
+          <iso3166Id>CZ</iso3166Id>
+          <iso3166Id>US</iso3166Id>
+        </countryList>
+        <languageList>
+          <iso639Id>ces</iso639Id>
+          <iso639Id>eng</iso639Id>
+        </languageList>
+      </configItem>
+    </layout>
+  </layoutList>
+</xkbConfigRegistry>
